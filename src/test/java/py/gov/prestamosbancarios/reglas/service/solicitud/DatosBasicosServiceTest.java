@@ -1,0 +1,16 @@
+
+package py.gov.prestamosbancarios.reglas.service.solicitud;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ *
+ * @author Aldo2
+ */
+public class DatosBasicosServiceTest {
+    
+      @Test
+	void DatosBasicosService() {
+
+	}
+}
