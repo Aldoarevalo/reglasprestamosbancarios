@@ -8,6 +8,10 @@ una vez que el proyecto haya descargado las dependencias desde el repositorio de
 
 ![image](https://user-images.githubusercontent.com/57592844/113493162-1c4c1a00-94ab-11eb-98fb-06ca2be455b7.png)
 
+Una vez que la ejecución haya comenzado el proyecto realizará un logueo al archivo json de prueba de la api de prestamos bancarios.
+
+![image](https://user-images.githubusercontent.com/57592844/113494257-b2d10900-94b4-11eb-90b6-c641d55c0a3a.png)
+
 una vez que haya terminado la ejecución debemos abrir el navegador y escribir el siguiente link. http://localhost:8080/swagger-ui.html#/
 
 con este link se abrirá nuestra api con sus respectivas rutas, a continuación se muestra en la imagen.
@@ -16,16 +20,15 @@ con este link se abrirá nuestra api con sus respectivas rutas, a continuación 
 
 Ahora procedemos a ejecutar la primera api debemos introducir por ejemplo el numero de padron 12800 para ver los aportes de los jubilados
 
-![image](https://user-images.githubusercontent.com/57592844/113493272-e9565600-94ab-11eb-83e9-72ced4ea10d2.png)
-
 http://localhost:8080/api/Solicitud de Prestamos/aportes?Padron=12800
+
+![image](https://user-images.githubusercontent.com/57592844/113493272-e9565600-94ab-11eb-83e9-72ced4ea10d2.png)
 
 Link de jecución desde Postman,
 
 https://www.getpostman.com/collections/7d7d1e5c3a4b0ba95aa5
 
 ![image](https://user-images.githubusercontent.com/57592844/113493831-06415800-94b1-11eb-937f-6733440c7d30.png)
-
 
 Ahora procedemos a ejecutar la segunda api que realiza un calculo matematico y saca un monto de las cuotas a pagar.
 
