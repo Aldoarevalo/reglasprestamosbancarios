@@ -24,11 +24,15 @@ http://localhost:8080/api/Solicitud de Prestamos/aportes?Padron=12800
 
 ![image](https://user-images.githubusercontent.com/57592844/113493272-e9565600-94ab-11eb-83e9-72ced4ea10d2.png)
 
+![image](https://user-images.githubusercontent.com/57592844/113494484-97ff9400-94b6-11eb-81da-0b06af5d6db5.png)
+
 Link de jecución desde Postman,
 
 https://www.getpostman.com/collections/7d7d1e5c3a4b0ba95aa5
 
 ![image](https://user-images.githubusercontent.com/57592844/113493831-06415800-94b1-11eb-937f-6733440c7d30.png)
+
+![image](https://user-images.githubusercontent.com/57592844/113494493-b6658f80-94b6-11eb-9b2f-2f88928fa855.png)
 
 Ahora procedemos a ejecutar la segunda api que realiza un calculo matematico y saca un monto de las cuotas a pagar.
 
@@ -36,8 +40,12 @@ http://localhost:8080/api/Solicitud de Prestamos/calculo-planilla-cuota?mont=500
 
 ![image](https://user-images.githubusercontent.com/57592844/113493951-13127b80-94b2-11eb-8d73-19a6a19ae250.png)
 
+![image](https://user-images.githubusercontent.com/57592844/113494499-d1d09a80-94b6-11eb-9eed-96de47d88439.png)
+
 Link de jecución desde Postman,
 https://www.getpostman.com/collections/264de2b1e0bfdcdd00a4
+
+![image](https://user-images.githubusercontent.com/57592844/113494506-e1e87a00-94b6-11eb-8913-0812d8b1c8bf.png)
 
 ![image](https://user-images.githubusercontent.com/57592844/113493840-1eb17280-94b1-11eb-8e5a-27ba03f776e5.png)
 
@@ -48,11 +56,14 @@ http://localhost:8080/api/Solicitud de Prestamos/DatosBasicos?Cedula=3524244&Pad
 
 ![image](https://user-images.githubusercontent.com/57592844/113493958-27ef0f00-94b2-11eb-84e6-80837a60532b.png)
 
+![image](https://user-images.githubusercontent.com/57592844/113494517-f3ca1d00-94b6-11eb-8900-1f67ffb0921a.png)
+
 Link de jecución desde Postman,
 https://www.getpostman.com/collections/ce4bb69b326f9a441263
 
 ![image](https://user-images.githubusercontent.com/57592844/113493850-430d4f00-94b1-11eb-8171-1f876440d79f.png)
 
+![image](https://user-images.githubusercontent.com/57592844/113494526-0a707400-94b7-11eb-93bb-7ebd36dacb40.png)
 
 La cuarta y ultima api se encarga de verificar los datos de los codeudores introduciendo los siguientes datos podremos visualizarlo.
 
@@ -60,11 +71,14 @@ http://localhost:8080/api/Solicitud de Prestamos/DatosCodeudores?Cedula=3524244
 
 ![image](https://user-images.githubusercontent.com/57592844/113493979-3fc69300-94b2-11eb-96e6-69a328c34d1d.png)
 
+![image](https://user-images.githubusercontent.com/57592844/113494534-1d834400-94b7-11eb-8205-cc6a2ff4a5b9.png)
+
 Link de jecución desde Postman,
 https://www.getpostman.com/collections/896c154cdffd18acb07b
 
 ![image](https://user-images.githubusercontent.com/57592844/113493861-53252e80-94b1-11eb-80ca-91ed50b12efa.png)
 
+![image](https://user-images.githubusercontent.com/57592844/113494541-34c23180-94b7-11eb-85a4-243e43c9eb49.png)
 
 link del archivo json desde donde ejecutamos la prueba https://my-json-server.typicode.com/Aldoarevalo/repoaldo
 
