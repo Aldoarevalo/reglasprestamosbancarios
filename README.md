@@ -82,6 +82,13 @@ https://www.getpostman.com/collections/896c154cdffd18acb07b
 
 link del archivo json desde donde ejecutamos la prueba https://my-json-server.typicode.com/Aldoarevalo/repoaldo
 
+Para ejecutar los tets simplemente dar clic derecho sobre uno de ellos y ejecutarlo
+
+![image](https://user-images.githubusercontent.com/57592844/116831340-93450300-ab7c-11eb-88c4-03a37b0f96f6.png)
+
+si todo está bien debiria mostrar la siguiente imagen
+
+![image](https://user-images.githubusercontent.com/57592844/116831351-bd96c080-ab7c-11eb-99fb-7d5dfa6b6736.png)
 
 
 
