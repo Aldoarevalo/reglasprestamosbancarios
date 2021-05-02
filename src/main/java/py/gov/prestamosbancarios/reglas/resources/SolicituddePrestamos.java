@@ -37,12 +37,12 @@ public class SolicituddePrestamos {
     @Autowired
     CodeudorService codeudorService;
 
-     @Autowired
+    @Autowired
     CalculosPlanillaCuotaService calculoCuotaService;
-     
-     @Autowired
+
+    @Autowired
     DatosBasicosService datosBasicosService;
-     
+
     @ApiOperation(value = "Retorna los datos de Aportes, aguinaldos, empleados Activos y empleados Activos Adicionales")
     @RequestMapping(value = "/aportes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<?> aportes(@RequestParam("Padron") String padron) {
@@ -68,7 +68,6 @@ public class SolicituddePrestamos {
         }
     }
 
-
     @ApiOperation(value = "calculo planilla cuota")
     @RequestMapping(value = "/calculo-planilla-cuota", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<?> calculoPlanilhaCuota(@RequestParam("mont") double mont, @RequestParam("tasa") double tasa,
@@ -79,19 +78,17 @@ public class SolicituddePrestamos {
             return ResponseEntity.badRequest().build();
         }
     }
-    
-     @ApiOperation(value = "Retorna los datos Basicos de los Clientes")
+
+    @ApiOperation(value = "Retorna los datos Basicos de los Clientes")
     @RequestMapping(value = "/DatosBasicos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<?> getDatos(@RequestParam("Padron") String padron,@RequestParam("Cedula") int ci) {
+    public ResponseEntity<?> getDatos(@RequestParam("Padron") String padron, @RequestParam("Cedula") int ci) {
         DatosBasicosDTO db = new DatosBasicosDTO();
         try {
-            return ResponseEntity.ok(datosBasicosService.getdatos(padron,ci));
+            return ResponseEntity.ok(datosBasicosService.getdatos(padron, ci));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.ok(db);
         }
     }
-  
 
 }
-

@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
  */
 public class CalculosPlanillaCuotaServiceTest {
 
-	@Test
-	void calculosPlanilhaCuota() {
+    @Test
+    void calculosPlanilhaCuota() {
 
-	}
+    }
 }

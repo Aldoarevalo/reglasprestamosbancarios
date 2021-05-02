@@ -20,6 +20,7 @@ import py.gov.prestamosbancarios.reglas.Dto.genericos.AguinaldoDTO;
 import py.gov.prestamosbancarios.reglas.Dto.genericos.AporteOutDTO;
 import py.gov.prestamosbancarios.reglas.Dto.genericos.EmpleadoActivoAdicionalDTO;
 import py.gov.prestamosbancarios.reglas.Dto.genericos.EmpleadoActivoDTO;
+
 /**
  *
  * @author Aldo2
@@ -27,131 +28,137 @@ import py.gov.prestamosbancarios.reglas.Dto.genericos.EmpleadoActivoDTO;
 @Service
 public class AporteService {
 
-	@Autowired
-	RestTemplate restTemplate;
+    @Autowired
+    RestTemplate restTemplate;
 
-	@Value("${URL_PRES_API}")
-	String urlPresAPi;
+    @Value("${URL_PRES_API}")
+    String urlPresAPi;
 
-	public AporteOutDTO buscarAportes(String padron) {
+    @Value("${LOGIN_PRES}")
+    String login;
 
-		AporteOutDTO retorno = new AporteOutDTO();
+    @Value("${SENHA_PRES}")
+    String senha;
 
-		retorno.setAguinaldo(getDadosAguinaldo(padron));
-		retorno.setEmpleadoActivo(getDadosEmpleadoActivo(padron));
-		retorno.setEmpleadoActivoAdicional(getDadosEmpleadoActivoAdicional(padron));
+    public AporteOutDTO buscarAportes(String padron) {
 
-		return retorno;
-	}
+        AporteOutDTO retorno = new AporteOutDTO();
 
-	private List<AguinaldoDTO> getDadosAguinaldo(String padron) {
-		List<AguinaldoDTO> retorno = new ArrayList<AguinaldoDTO>();
+        retorno.setAguinaldo(getDadosAguinaldo(padron));
+        retorno.setEmpleadoActivo(getDadosEmpleadoActivo(padron));
+        retorno.setEmpleadoActivoAdicional(getDadosEmpleadoActivoAdicional(padron));
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
+        return retorno;
+    }
 
-		String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/aguinaldo?padron=" + padron;
+    private List<AguinaldoDTO> getDadosAguinaldo(String padron) {
+        List<AguinaldoDTO> retorno = new ArrayList<AguinaldoDTO>();
 
-		String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		try {
-			JSONParser parser = new JSONParser();
-			JSONArray lista = (JSONArray) parser.parse(resp);
+        String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/aguinaldo?padron=" + padron;
 
-			lista.forEach(x -> {
-				JSONObject obj = (JSONObject) x;
+        String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
 
-				AguinaldoDTO aguinaldo = new AguinaldoDTO();
-				aguinaldo.setPadron((Long) obj.get("AACAA_PADR"));
-				aguinaldo.setCodigoBanco((Long) obj.get("AACAA_BANC"));
-				aguinaldo.setCedulaIdentidad((Long) obj.get("AACAA_CEDU"));
-				aguinaldo.setAporteAguinaldo((Long) obj.get("AACAA_APOR_AGUI"));
-				aguinaldo.setCantidadCuota((Long) obj.get("AACAA_CANT_CUOT"));
-				aguinaldo.setImporteCuota((Long) obj.get("AACAA_IMPO_CUOT"));
-				aguinaldo.setFechaLiquidacion((Long) obj.get("AACAA_AAMD_LIQU"));
-				aguinaldo.setTotalValorPago((Long) obj.get("AACAA_TOTA_PAGA"));
-				aguinaldo.setFechaInicio((String) obj.get("AACAA_AAMM_INIC"));
+        try {
+            JSONParser parser = new JSONParser();
+            JSONArray lista = (JSONArray) parser.parse(resp);
 
-				retorno.add(aguinaldo);
+            lista.forEach(x -> {
+                JSONObject obj = (JSONObject) x;
 
-			});
+                AguinaldoDTO aguinaldo = new AguinaldoDTO();
+                aguinaldo.setPadron((Long) obj.get("AACAA_PADR"));
+                aguinaldo.setCodigoBanco((Long) obj.get("AACAA_BANC"));
+                aguinaldo.setCedulaIdentidad((Long) obj.get("AACAA_CEDU"));
+                aguinaldo.setAporteAguinaldo((Long) obj.get("AACAA_APOR_AGUI"));
+                aguinaldo.setCantidadCuota((Long) obj.get("AACAA_CANT_CUOT"));
+                aguinaldo.setImporteCuota((Long) obj.get("AACAA_IMPO_CUOT"));
+                aguinaldo.setFechaLiquidacion((Long) obj.get("AACAA_AAMD_LIQU"));
+                aguinaldo.setTotalValorPago((Long) obj.get("AACAA_TOTA_PAGA"));
+                aguinaldo.setFechaInicio((String) obj.get("AACAA_AAMM_INIC"));
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+                retorno.add(aguinaldo);
 
-		return retorno;
-	}
+            });
 
-	private List<EmpleadoActivoDTO> getDadosEmpleadoActivo(String padron) {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		List<EmpleadoActivoDTO> retorno = new ArrayList<EmpleadoActivoDTO>();
+        return retorno;
+    }
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
+    private List<EmpleadoActivoDTO> getDadosEmpleadoActivo(String padron) {
 
-		String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/aporteemp?cuenta=" + padron;
+        List<EmpleadoActivoDTO> retorno = new ArrayList<EmpleadoActivoDTO>();
 
-		String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		try {
-			JSONParser parser = new JSONParser();
-			JSONArray lista = (JSONArray) parser.parse(resp);
+        String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/aporteemp?cuenta=" + padron;
 
-			lista.forEach(x -> {
-				JSONObject obj = (JSONObject) x;
+        String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
 
-				EmpleadoActivoDTO empleadoActivo = new EmpleadoActivoDTO();
-				empleadoActivo.setPadron((Long) obj.get("APW117_PADR"));
-				empleadoActivo.setCedulaIdentidad((Long) obj.get("APW117_CEDU"));
-				empleadoActivo.setAnoAntiguedad((Long) obj.get("APW117_AANO_ANTI"));
-				empleadoActivo.setMesAntiguedad((Long) obj.get("APW117_MMES_ANTI"));
-				empleadoActivo.setDiaAntiguedad((Long) obj.get("APW117_DDIA_ANTI"));
-				empleadoActivo.setTotalValorAportado((Long) obj.get("APW117_TOTA_APOR"));
-				empleadoActivo.setUltimoSueldo((Long) obj.get("APW117_ULTI_SUEL"));
+        try {
+            JSONParser parser = new JSONParser();
+            JSONArray lista = (JSONArray) parser.parse(resp);
 
-				retorno.add(empleadoActivo);
-			});
+            lista.forEach(x -> {
+                JSONObject obj = (JSONObject) x;
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+                EmpleadoActivoDTO empleadoActivo = new EmpleadoActivoDTO();
+                empleadoActivo.setPadron((Long) obj.get("APW117_PADR"));
+                empleadoActivo.setCedulaIdentidad((Long) obj.get("APW117_CEDU"));
+                empleadoActivo.setAnoAntiguedad((Long) obj.get("APW117_AANO_ANTI"));
+                empleadoActivo.setMesAntiguedad((Long) obj.get("APW117_MMES_ANTI"));
+                empleadoActivo.setDiaAntiguedad((Long) obj.get("APW117_DDIA_ANTI"));
+                empleadoActivo.setTotalValorAportado((Long) obj.get("APW117_TOTA_APOR"));
+                empleadoActivo.setUltimoSueldo((Long) obj.get("APW117_ULTI_SUEL"));
 
-		return retorno;
-	}
+                retorno.add(empleadoActivo);
+            });
 
-	private List<EmpleadoActivoAdicionalDTO> getDadosEmpleadoActivoAdicional(String padron) {
-		List<EmpleadoActivoAdicionalDTO> retorno = new ArrayList<EmpleadoActivoAdicionalDTO>();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
+        return retorno;
+    }
 
-		String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/empactivoadc?padron=" + padron;
+    private List<EmpleadoActivoAdicionalDTO> getDadosEmpleadoActivoAdicional(String padron) {
+        List<EmpleadoActivoAdicionalDTO> retorno = new ArrayList<EmpleadoActivoAdicionalDTO>();
 
-		String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		try {
-			JSONParser parser = new JSONParser();
-			JSONArray lista = (JSONArray) parser.parse(resp);
+        String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/empactivoadc?padron=" + padron;
 
-			lista.forEach(x -> {
-				JSONObject obj = (JSONObject) x;
-				EmpleadoActivoAdicionalDTO empleadoActivoAdicional = new EmpleadoActivoAdicionalDTO();
-                                empleadoActivoAdicional.setPadron((Long) obj.get("PADEMAC"));
-				empleadoActivoAdicional.setFechaUltimoPago((String) obj.get("fechaUltimoPago"));
-				empleadoActivoAdicional.setCantidadAportesPago((Long) obj.get("cantidadAportesPago"));
+        String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
 
-				retorno.add(empleadoActivoAdicional);
-			});
+        try {
+            JSONParser parser = new JSONParser();
+            JSONArray lista = (JSONArray) parser.parse(resp);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+            lista.forEach(x -> {
+                JSONObject obj = (JSONObject) x;
+                EmpleadoActivoAdicionalDTO empleadoActivoAdicional = new EmpleadoActivoAdicionalDTO();
+                empleadoActivoAdicional.setPadron((Long) obj.get("PADEMAC"));
+                empleadoActivoAdicional.setFechaUltimoPago((String) obj.get("fechaUltimoPago"));
+                empleadoActivoAdicional.setCantidadAportesPago((Long) obj.get("cantidadAportesPago"));
 
-		return retorno;
-	}
+                retorno.add(empleadoActivoAdicional);
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return retorno;
+    }
 
 }

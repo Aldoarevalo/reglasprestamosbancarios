@@ -1,15 +1,15 @@
-
 package py.gov.prestamosbancarios.reglas.service.solicitud;
 
 import org.junit.jupiter.api.Test;
+
 /**
  *
  * @author Aldo2
  */
 public class AporteServiceTest {
-    
-    @Test
-	void AporteService() {
 
-	}
+    @Test
+    void AporteService() {
+
+    }
 }

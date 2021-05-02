@@ -14,48 +14,54 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import py.gov.prestamosbancarios.reglas.Dto.genericos.DatosBasicosDTO;
+
 /**
  *
  * @author Aldo2
  */
-
 @Service
 public class DatosBasicosService {
 
-	@Autowired
-	RestTemplate restTemplate;
+    @Autowired
+    RestTemplate restTemplate;
 
-	@Value("${URL_PRES_API}")
-	String urlPresAPi;
+    @Value("${URL_PRES_API}")
+    String urlPresAPi;
 
-	public DatosBasicosDTO getdatos(String padron, int cedula) {
+    @Value("${LOGIN_PRES}")
+    String login;
 
-		DatosBasicosDTO retorno = new DatosBasicosDTO();
+    @Value("${SENHA_PRES}")
+    String senha;
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
+    public DatosBasicosDTO getdatos(String padron, int cedula) {
 
-		String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/datosbasicos?padron=" + padron + "&cedula=" + cedula;
+        DatosBasicosDTO retorno = new DatosBasicosDTO();
 
-		String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
-		try {
-			JSONObject obj = new JSONArray(resp).getJSONObject(0);
-                        retorno.setPadron(obj.getString("CLI_PAD"));
-                        retorno.setBanco(obj.getString("CLI_BAN"));
-                        retorno.setCedula(obj.getString("CLI_CEDU"));
-			retorno.setNombres(obj.getString("CLI_NOM"));
-			retorno.setApellidos(obj.getString("CLI_APEL"));
-                        retorno.seDireccionParticular(obj.getString("PAR_DIR"));
-			retorno.seDireccionLaboral(obj.getString("CLI_LABOR"));
-			retorno.setNombreConyuge(obj.getString("PRBEN_CONY_NOMB"));
-			retorno.setApellidoConyuge(obj.getString("PRBEN_CONY_APEL"));
-			retorno.setCedulaConyuge(obj.getString("PRBEN_CONY_CEDU"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		return retorno;
-	}
+        String uri = urlPresAPi + "my-json-server.typicode.com/Aldoarevalo/repoaldo/datosbasicos?padron=" + padron + "&cedula=" + cedula;
+
+        String resp = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class).getBody();
+        try {
+            JSONObject obj = new JSONArray(resp).getJSONObject(0);
+            retorno.setPadron(obj.getString("CLI_PAD"));
+            retorno.setBanco(obj.getString("CLI_BAN"));
+            retorno.setCedula(obj.getString("CLI_CEDU"));
+            retorno.setNombres(obj.getString("CLI_NOM"));
+            retorno.setApellidos(obj.getString("CLI_APEL"));
+            retorno.seDireccionParticular(obj.getString("PAR_DIR"));
+            retorno.seDireccionLaboral(obj.getString("CLI_LABOR"));
+            retorno.setNombreConyuge(obj.getString("PRBEN_CONY_NOMB"));
+            retorno.setApellidoConyuge(obj.getString("PRBEN_CONY_APEL"));
+            retorno.setCedulaConyuge(obj.getString("PRBEN_CONY_CEDU"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return retorno;
+    }
 
 }

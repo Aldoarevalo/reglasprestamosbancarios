@@ -8,32 +8,32 @@ import java.util.List;
  */
 public class AporteOutDTO {
 
-	private List<AguinaldoDTO> aguinaldo;
-	private List<EmpleadoActivoDTO> empleadoActivo;
-	private List<EmpleadoActivoAdicionalDTO> empleadoActivoAdicional;
+    private List<AguinaldoDTO> aguinaldo;
+    private List<EmpleadoActivoDTO> empleadoActivo;
+    private List<EmpleadoActivoAdicionalDTO> empleadoActivoAdicional;
 
-	public List<AguinaldoDTO> getAguinaldo() {
-		return aguinaldo;
-	}
+    public List<AguinaldoDTO> getAguinaldo() {
+        return aguinaldo;
+    }
 
-	public void setAguinaldo(List<AguinaldoDTO> aguinaldo) {
-		this.aguinaldo = aguinaldo;
-	}
+    public void setAguinaldo(List<AguinaldoDTO> aguinaldo) {
+        this.aguinaldo = aguinaldo;
+    }
 
-	public List<EmpleadoActivoDTO> getEmpleadoActivo() {
-		return empleadoActivo;
-	}
+    public List<EmpleadoActivoDTO> getEmpleadoActivo() {
+        return empleadoActivo;
+    }
 
-	public void setEmpleadoActivo(List<EmpleadoActivoDTO> empleadoActivo) {
-		this.empleadoActivo = empleadoActivo;
-	}
+    public void setEmpleadoActivo(List<EmpleadoActivoDTO> empleadoActivo) {
+        this.empleadoActivo = empleadoActivo;
+    }
 
-	public List<EmpleadoActivoAdicionalDTO> getEmpleadoActivoAdicional() {
-		return empleadoActivoAdicional;
-	}
+    public List<EmpleadoActivoAdicionalDTO> getEmpleadoActivoAdicional() {
+        return empleadoActivoAdicional;
+    }
 
-	public void setEmpleadoActivoAdicional(List<EmpleadoActivoAdicionalDTO> empleadoActivoAdicional) {
-		this.empleadoActivoAdicional = empleadoActivoAdicional;
-	}
+    public void setEmpleadoActivoAdicional(List<EmpleadoActivoAdicionalDTO> empleadoActivoAdicional) {
+        this.empleadoActivoAdicional = empleadoActivoAdicional;
+    }
 
 }
