@@ -16,7 +16,7 @@ and open the template in the editor.
   <input type="date" id="end" name="end">
   <input type="submit" onclick="calcular()">
 </div>
-                <script>
+               <script>
         function calcular() {
   const start = new Date(document.getElementById('start').value)
   const end = new Date(document.getElementById('end').value)
